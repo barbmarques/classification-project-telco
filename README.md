@@ -12,12 +12,17 @@ Database of 7043 customers, 24 features
 - Find drivers for customer churn at Telco
 - Construct a ML classification model that accurately predicts customer churn.
 
+###Insert Data Dictionary Here
+
+
+
 ### Process/Pipeline:
 https://trello.com/b/vOXbVcbl
 
 - Create git repository
 - Create Readme file
     - commit and push
+- Create a column for tenure in years
 - Create acquire.py
     - write sequel query to join tables and acquire data
     - create get_telco_data function
@@ -25,9 +30,10 @@ https://trello.com/b/vOXbVcbl
 - import pandas, acquire and use it to acquire in a pandas dataframe
     - import env.py
     - run get_telco_data function  
-
 - review data summary information and begin to compile a data dictionary of data types
+- create data dictionary of all features
 - plot distributions of individual variables
 - Documented takeaways for data prep
+- create prepare.py to clean, tidy and split data into train, validate, test
 
 
