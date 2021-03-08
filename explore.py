@@ -34,9 +34,9 @@ def explore_univariate(train, cat_vars, quant_vars):
         
 def explore_bivariate(train, target, cat_vars, quant_vars):
     for cat in cat_vars:
-        explore_bivariate_categorical(train, 'survived', cat)
+        explore_bivariate_categorical(train, 'churn', cat)
     for quant in quant_vars:
-        explore_bivariate_quant(train, 'survived', quant)
+        explore_bivariate_quant(train, 'churn', quant)
 
 def explore_multivariate(train, target, cat_vars, quant_vars):
     '''
@@ -45,9 +45,9 @@ def explore_multivariate(train, target, cat_vars, quant_vars):
     plt.show()
     violin = plot_violin_grid_with_color(train, target, cat_vars, quant_vars)
     plt.show()
-    pair = sns.pairplot(data=train, vars=quant_vars, hue='survived')
+    pair = sns.pairplot(data=train, vars=quant_vars, hue='churn')
     plt.show()
-    plot_all_continuous_vars(train, 'survived', quant_vars)
+    plot_all_continuous_vars(train, 'churn', quant_vars)
     plt.show()    
 
 
