@@ -7,11 +7,14 @@ def clean_telco(df):
     '''
     This function cleans data obtained from Codeup's Telco database by: 
     
-    removing duplicate columns, 
+    removing duplicate rows and columns, 
     
     #### FILL IN WITH SPECIFIC CHANGES
     
     '''
+    
+    #remove any duplicate rows
+    df.drop_duplicates(inplace = True)
     
     # fill nans in total_charges - these eleven customers have tenure of 0, so it is
     # reasonable to replace nan with 0
@@ -28,14 +31,17 @@ def clean_telco(df):
     df['tenure_years'] = round(df.tenure_months / 12, 2)
 
     # Creating dataframe of dummy variables for gender: male = 1, female = 0, streaming_tv, and streaming_movies
-    dummycols = ['gender', 'streaming_tv', 'streaming_movies']
-    df_dummies = pd.get_dummies(dummycols, drop_first = False)
+    df_dummies = pd.get_dummies(df[['gender', 'streaming_tv', 'streaming_movies']], drop_first = False)
 
     # Adding dummies to our original dataframe
     df = pd.concat([df, df_dummies], axis = 1)
 
     # Drop original gender, streaming_tv, and streaming_movies columns
+    dummycols = ['gender', 'streaming_tv', 'streaming_movies']
     df = df.drop(columns = dummycols, axis = 1)
+    
+    # Encode booleans
+    
     
     # Create one variable 'phone_services' combining phone service and multiple lines
     # 0 = no phone service, 1 = one line, 2 = multiple lines 
@@ -80,6 +86,11 @@ def clean_telco(df):
     df['online_backup'] = df.online_backup.replace({'No': 0, 'Yes': 1, 'No internet service': 0})
     df['device_protection'] = df.device_protection.replace({'No': 0, 'Yes': 1, 'No internet service': 0})
     
+    
+    # Change bool columns to False: 0, True: 1
+    u = df.select_dtypes(bool)
+    df[u.columns] = u.astype(int)     
+
     return df
 
 
