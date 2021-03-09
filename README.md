@@ -1,16 +1,14 @@
 ### classification-project-telco
-This repository will store the exploratory notebook and deliverables for the Telco Classification Project.
-
 ### Project Summary:
 
-Telco customers are leaving for newer companies. Especially phone customers. Find a driver of the churn. A copy of the report will go to executives. Include enough documentation in your final notebook that someone could work through it without you.
+Telco customers are leaving for newer companies. Find a driver of the churn. A copy of the report will go to executives. Include enough documentation in your final notebook that someone could work through it without you.
 
-Database of 7043 customers, 24 features
+Data Source: Telco database of 7043 customers, 24 features
 
 ### Goals:
 
 - Find drivers for customer churn at Telco
-- Construct a ML classification model that accurately predicts customer churn.
+- Construct a machine learning classification model that accurately predicts customer churn.
 
 
 ### Data Dictionary
@@ -23,30 +21,35 @@ Database of 7043 customers, 24 features
 ---
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- |
-|payment\_type\_id | Indicates how a customer pays their bill each month | int64 |
-|contract\_type\_id| Indicates which contract type a customer has | int64 |
-|internet\_service\_type_id| Indicates what type of internet service a customer has | int64 |
-|customer\_id|Alpha-numeric ID that identifies each customer| object |
-gender|Gender of the customer| object |
-senior_citizen|Indicates if the customer is 65 or older| int64 |
-partner|If a customer is married| object | 
-dependents|Indicates if a customer lives with dependents| object |
-tenure|The length of a customers relationship with Telco™ measured in months|  int64 |
-phone_service|If a customer has phone service| object |
-multiple_lines|If a customer has multiple phone lines| object |
-online_security|Indicates if a customer has online security add-on| object |
-online_backup|Indicates if a customer has online backups add-on| object |
-device_protection|Indicates if a customer has a protection plan for Telco™ devices| object |
-tech_support|Indicates whether a customer has technical support add-on| object |
-streaming_tv|Indicates if a customer uses internet to stream tv| object |
-streaming_movies|Indicates if a customer uses internet to stream movies| object |
-paperless_billing|Indicates if a customer is enrolled in paperless billing| object |
-monthly_charges|The amount a customer pays each month for services with Telco™| object |
-total_charges|The total amount a customer has paid for Telco™ services| object |
-|internet\_service\_type|Indicates the type of internet service a customer has| object |
-|contract_type|The type of contract a customer has| object |
-|payment_type|How a customer pays their bill each month| object |
-
+|**Target variable:** has_churned | Indicates whether customer has cancelled all services. | int64 |
+|customer_id| Unique identifier for each customer | object |
+|senior_citizen| Indicates whether customer's age is 65 or older | int64 |
+|tenure_months|Length of customer's relationship with Telco in months | int64 |
+paperless_billing|Indicates whether customer has selected paperless billing | int64 |
+monthly_charges|The amount customer pays for services each month| float64 |
+total_charges|The total amount customer has paid for Telco services throughout tenure| float64 | 
+tenure_years|Lenth of customer's relationship with Telco in years| float64 |
+phone_services|Indicates whether customer has a single phone line, multiple lines, or no phone service|  int64 |
+gender_Female|Customer is female| uint8 |
+gender_Male|Customer is male| uint8 |
+streamer |Customer subscribes to streaming tv and/or movies | int 64 |
+is_single_no_dep |Customer has no partner, no dependents | int64 |
+has_partner_no_dep|Customer has partner, but no dependents| int64 |
+is_single_with_dep|Customer has dependents, but no partner| int64 |
+family|Customer has partner and dependents| int64 |
+month_to_month|Customer has a month-to-month contract| int64 |
+one-year|Customer has a one-year contract| int64 |
+two-year|Customer has a two-year contract| int64 |
+e-Check|Customer pays with electronic check| int64 |
+sends_check|Customers pays by check through the mail| int64 |
+has_auto_pay|Customer payment is auto-drafted or automatically charged to credit card |int64 |
+dsl|Customer has dsl internet service| int64 |
+fiber|Customer has fiber optic internet service| int64 |
+no_internet|Customer has no internet service| int64 |
+no_tech_support|Customer does not subscribe to tech support| int64 |
+no_online_security|Customer does not subscribe to online security | int64 |
+no_online_backup|Customer does not subscribe to online backup | int64 |
+no_device_protection|Customer does not subscribe to device protection| int64 |
 
 
 
