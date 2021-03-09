@@ -34,9 +34,9 @@ def explore_univariate(train, cat_vars, quant_vars):
         
 def explore_bivariate(train, target, cat_vars, quant_vars):
     for cat in cat_vars:
-        explore_bivariate_categorical(train, 'churn', cat)
+        explore_bivariate_categorical(train, 'has_churned', cat)
     for quant in quant_vars:
-        explore_bivariate_quant(train, 'churn', quant)
+        explore_bivariate_quant(train, 'has_churned', quant)
 
 def explore_multivariate(train, target, cat_vars, quant_vars):
     '''
@@ -45,9 +45,9 @@ def explore_multivariate(train, target, cat_vars, quant_vars):
     plt.show()
     violin = plot_violin_grid_with_color(train, target, cat_vars, quant_vars)
     plt.show()
-    pair = sns.pairplot(data=train, vars=quant_vars, hue='churn')
+    pair = sns.pairplot(data=train, vars=quant_vars, hue='has_churned')
     plt.show()
-    plot_all_continuous_vars(train, 'churn', quant_vars)
+    plot_all_continuous_vars(train, 'has_churned', quant_vars)
     plt.show()    
 
 
@@ -192,7 +192,8 @@ def plot_all_continuous_vars(train, target, quant_vars):
     melt = train[my_vars].melt(id_vars=target, var_name="measurement")
     plt.figure(figsize=(8,6))
     p = sns.boxenplot(x="measurement", y="value", hue=target, data=melt)
-    p.set(yscale="log", xlabel='')    
+    p.set(yscale="log", xlabel='')  
+    plt.tight_layout()
     plt.show()
 
 def plot_violin_grid_with_color(train, target, cat_vars, quant_vars):
@@ -205,6 +206,7 @@ def plot_violin_grid_with_color(train, target, cat_vars, quant_vars):
             ax[i].set_xlabel('')
             ax[i].set_ylabel(quant)
             ax[i].set_title(cat)
+            plt.tight_layout()
         plt.show()
     
 def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
@@ -216,4 +218,5 @@ def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
             ax[i].set_xlabel('')
             ax[i].set_ylabel(quant)
             ax[i].set_title(cat)
+            plt.tight_layout()
         plt.show()
