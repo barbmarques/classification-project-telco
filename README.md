@@ -1,24 +1,64 @@
 ### classification-project-telco
-### Project Summary:
+#### Project Summary:
 
-Telco customers are leaving for newer companies. Find a driver of the churn. A copy of the report will go to executives. Include enough documentation in your final notebook that someone could work through it without you.
+Telco is concerned about its significant customer attrition rate and has asked Codeup's Data Science team to identify drivers of churn. To do this, we created a machine learning model which predicts future customer churn as accurately as possible. 
 
-Data Source: Telco database of 7043 customers, 24 features
+Data Source: Telco's database of 7043 customers, including 24 attributes.
 
-### Goals:
-
+#### Project Goals:
 - Find drivers for customer churn at Telco
-- Construct a machine learning classification model that accurately predicts customer churn.
+- Construct a ML classification model that accurately predicts customer churn. 
+
+#### Using a Random Forest Model, we identified the following predictors of churn:
+- lack of tech support
+- month-to-month contracts
+- non-enrollment in auto-pay
+- fiber optic internet 
+- not subscribing to streaming movies and/or tv
+
+#### Our analysis revealed that number of factors are contributing to churn:
+- Customer does not receive technical support
+- Customer does not participate in auto-pay
+- Customer does not subscribe to streaming services
+- Customer is on a month-to-month contract
+- Customer has fiber optic internet
+
+#### Our recommendations to reduce churn include:
+- Offering reduced prices on tech support for internet customers.
+- Offer packages for streaming movies and tv
+- Encourage customers to participate in some form of automatic payment (bank draft or credit card).
+- Incentivize 1- and 2-year contracts
+
+To view the prediction and probability of churn for each Telco customer in our test data, download ```churn_probability.csv```. 
+
+All files referenced in this presentation are available in the github repository for this project:   https://github.com/barbmarques/classification-project-telco.
 
 
-### Data Dictionary
-
-|Variable | Definition | Data Type | Value Counts |
-|
-|churn|This is our target **variable** Indicates that a customer has cancelled servicer| object |
+#### Process/Data Science Pipeline:
+Each step in the our process is recorded and staged on a Trello board at: https://trello.com/b/vOXbVcbl
 
 
----
+#### Instructions for Reproducing Our Findings:
+
+1.  Download the following files from https://github.com/barbmarques/classification-project-telco to your working directory:  
+ - explore.py
+ - prepare.py
+ - acquire.py
+ - logistic_regression_util.py
+ - Final_Notebook.ipynb
+ - churn_probability.csv
+ 
+
+2.  You will also need you a copy of your personal env file in your working directory:
+ - This should contain your access information (host, user, password) to access Codeup's database in MySQL
+
+3. Run the Jupyter notebook, cell by cell, allowing time for visualizations to generate.
+
+4. To access the prediction and probability of churn for each Telco customer in our test data in a csv format, download ```churn_probability.csv```. 
+
+
+#### Data Dictionary of Variables Used in Our Analysis
+
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- |
 |**Target variable:** has_churned | Indicates whether customer has cancelled all services. | int64 |
@@ -30,9 +70,7 @@ monthly_charges|The amount customer pays for services each month| float64 |
 total_charges|The total amount customer has paid for Telco services throughout tenure| float64 | 
 tenure_years|Lenth of customer's relationship with Telco in years| float64 |
 phone_services|Indicates whether customer has a single phone line, multiple lines, or no phone service|  int64 |
-gender_Female|Customer is female| uint8 |
-gender_Male|Customer is male| uint8 |
-streamer |Customer subscribes to streaming tv and/or movies | int 64 |
+not_streamer |Customer subscribes to streaming tv and/or movies | int 64 |
 is_single_no_dep |Customer has no partner, no dependents | int64 |
 has_partner_no_dep|Customer has partner, but no dependents| int64 |
 is_single_with_dep|Customer has dependents, but no partner| int64 |
@@ -51,26 +89,5 @@ no_online_security|Customer does not subscribe to online security | int64 |
 no_online_backup|Customer does not subscribe to online backup | int64 |
 no_device_protection|Customer does not subscribe to device protection| int64 |
 
-
-
-### Process/Pipeline:
-https://trello.com/b/vOXbVcbl
-
-- Create git repository
-- Create Readme file
-    - commit and push
-- Create a column for tenure in years
-- Create acquire.py
-    - write sequel query to join tables and acquire data
-    - create get_telco_data function
-    - commit and push
-- import pandas, acquire and use it to acquire in a pandas dataframe
-    - import env.py
-    - run get_telco_data function  
-- review data summary information and begin to compile a data dictionary of data types
-- create data dictionary of all features
-- plot distributions of individual variables
-- Documented takeaways for data prep
-- create prepare.py to clean, tidy and split data into train, validate, test
 
 
